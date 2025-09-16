@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clone App Research</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Roboto Serif', serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .paper {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .title {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 0.2em;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    .rule,
+    .section-rule {
+      border: none;
+      border-top: 2px solid #aaa;
+      margin: 1em 0;
+    }
+
+    .meta {
+      margin-top: 1em;
+      font-size: 0.95em;
+    }
+
+    .meta div {
+      margin: 0.2em 0;
+    }
+
+    section ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    section li {
+      margin: 0.5em 0;
+    }
+
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #777;
+      text-align: center;
+    }
+
+    .datetime {
+      font-size: 1em;
+      color: #666;
+      margin-top: 0.5em;
+    }
+
+    .greeting {
+      font-size: 1.1em;
+      margin-bottom: 1em;
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+
+  <article class="paper">
+    <header>
+      <h1 class="title">Clone App</h1>
+      <p class="subtitle">A Project Showcase</p>
+      <p class="greeting" id="greeting"></p>
+      <p class="datetime" id="datetime"></p>
+      <hr class="rule" />
+
+      <div class="meta" aria-label="Document metadata">
+        <div><strong>Name:</strong> Neelambar Singh</div>
+        <div><strong></strong> •</div>
+        <div><strong>Date:</strong> <time datetime="2025-09-16">September 16, 2025</time></div>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="dev-heading">
+        <h2 id="dev-heading">Project Files</h2>
+        <hr class="section-rule" />
+        <ul>
+          <li><a href="https://drive.usercontent.google.com/download?id=1aqCzwUAhV9UCAD0Bjb377h4wUsMmgeeK&export=download&authuser=0">Download Spotify App Clone</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Neelambar Singh. All rights reserved.</p>
+    </footer>
+  </article>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Open external links in new tab
+      document.querySelectorAll("a").forEach(link => {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      });
+
+      // Greeting based on time
+      const greetingElement = document.getElementById("greeting");
+      const now = new Date();
+      const hour = now.getHours();
+      let greeting = "";
+
+      if (hour < 12) {
+        greeting = "Good morning!";
+      } else if (hour < 18) {
+        greeting = "Good afternoon!";
+      } else {
+        greeting = "Good evening!";
+      }
+
+      greetingElement.textContent = greeting;
+
+      // Real-time Date and Time
+      function updateDateTime() {
+        const now = new Date();
+        const datetimeElement = document.getElementById("datetime");
+        const options = {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        };
+        datetimeElement.textContent = `Current Time: ${now.toLocaleString('en-US', options)}`;
+      }
+
+      updateDateTime();
+      setInterval(updateDateTime, 1000); // Update every second
+    });
+  </script>
+
+</body>
+
+</html>
