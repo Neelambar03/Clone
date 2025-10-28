@@ -1,0 +1,172 @@
+:root {
+  --bg: #fafafa;
+  --text: #333;
+  --accent: #c62828;
+  --card-bg: #fff;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+/* Header */
+header {
+  background: var(--accent);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #ffeb3b;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+#theme-toggle {
+  background: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  background: #eee;
+  padding: 8px 40px;
+  font-size: 14px;
+}
+
+/* Product */
+.product {
+  padding: 20px 40px;
+}
+
+.product-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.phone-image {
+  width: 280px;
+  border-radius: 10px;
+}
+
+.key-specs {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  flex: 1;
+}
+
+.key-specs ul {
+  list-style: none;
+  padding: 0;
+}
+
+.key-specs li {
+  margin: 8px 0;
+}
+
+.buttons button {
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tabs {
+  margin-top: 30px;
+}
+
+.tab {
+  background: #ddd;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: white;
+}
+
+.tab-content {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 0 5px 5px 5px;
+  margin-top: -1px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Reviews */
+#review-form {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+#review-form input, #review-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#review-form button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#review-list {
+  margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #222;
+  color: white;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+/* Dark Mode */
+.dark {
+  --bg: #1a1a1a;
+  --text: #f2f2f2;
+  --card-bg: #2a2a2a;
+  --accent: #ff5252;
+}

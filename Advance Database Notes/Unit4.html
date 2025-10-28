@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit IV - NoSQL Database Management</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f8f9fa;
+      color: #222;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #0a4d8c;
+    }
+    h1 {
+      text-align: center;
+      text-transform: uppercase;
+      border-bottom: 3px solid #0a4d8c;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+    }
+    section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #0a4d8c;
+      color: white;
+    }
+    code {
+      background: #eee;
+      padding: 3px 6px;
+      border-radius: 4px;
+      color: #c7254e;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Unit IV: NoSQL Database Management</h1>
+
+  <section>
+    <h2>1. Introduction</h2>
+    <p><strong>NoSQL</strong> means “Not Only SQL.” It refers to databases that manage data without traditional relational tables. They are designed for <strong>flexibility, scalability, and high performance</strong> with large or unstructured data.</p>
+  </section>
+
+  <section>
+    <h2>2. Need for NoSQL</h2>
+    <ul>
+      <li>Handles <strong>Big Data</strong> efficiently.</li>
+      <li><strong>Schema-free</strong> and flexible.</li>
+      <li>Supports <strong>horizontal scaling</strong> across servers.</li>
+      <li>Ideal for <strong>real-time web and cloud apps</strong>.</li>
+      <li>Ensures <strong>high speed and availability</strong>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. Types of NoSQL Databases</h2>
+    <table>
+      <tr><th>Type</th><th>Description</th><th>Examples</th><th>Use Case</th></tr>
+      <tr><td>Key-Value Store</td><td>Stores data as key–value pairs</td><td>Redis, DynamoDB</td><td>Caching, Sessions</td></tr>
+      <tr><td>Document Store</td><td>Stores JSON-like documents</td><td>MongoDB, CouchDB</td><td>User data, Content</td></tr>
+      <tr><td>Column Store</td><td>Data in columns instead of rows</td><td>Cassandra, HBase</td><td>Analytics</td></tr>
+      <tr><td>Graph Database</td><td>Stores nodes and relationships</td><td>Neo4j</td><td>Social Networks</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>4. MongoDB Basics</h2>
+    <p><strong>MongoDB</strong> is a document-oriented NoSQL database using <strong>BSON</strong> (Binary JSON). It is schema-less, scalable, and easy to use.</p>
+  </section>
+
+  <section>
+    <h2>5. Common MongoDB Data Types</h2>
+    <p>String, Integer, Double, Boolean, Array, Object, ObjectId, Date, Null, Binary.</p>
+  </section>
+
+  <section>
+    <h2>6. CRUD Operations</h2>
+    <table>
+      <tr><th>Operation</th><th>Example Command</th></tr>
+      <tr><td>Create</td><td><code>db.students.insertOne({...})</code></td></tr>
+      <tr><td>Read</td><td><code>db.students.find({ age: { $gt: 20 } })</code></td></tr>
+      <tr><td>Update</td><td><code>db.students.updateOne({name:"John"}, {$set:{age:23}})</code></td></tr>
+      <tr><td>Delete</td><td><code>db.students.deleteOne({name:"Sara"})</code></td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>7. MongoDB Query Language</h2>
+    <p>Operators: <code>$eq</code>, <code>$gt</code>, <code>$lt</code>, <code>$in</code>, <code>$and</code>, <code>$or</code>, <code>$exists</code></p>
+    <pre><code>db.students.find({ age: { $gt: 20 }, city: "Delhi" })</code></pre>
+  </section>
+
+  <section>
+    <h2>8. Indexing</h2>
+    <p>Indexes improve query performance.</p>
+    <pre><code>db.students.createIndex({ name: 1 })</code></pre>
+  </section>
+
+  <section>
+    <h2>9. Aggregation</h2>
+    <p>Used for data analysis and summarization.</p>
+    <pre><code>db.students.aggregate([
+  { $match: { age: { $gt: 20 } } },
+  { $group: { _id: "$course", avgAge: { $avg: "$age" } } }
+])</code></pre>
+  </section>
+
+  <section>
+    <h2>10. Sharding</h2>
+    <p>Splits data across multiple servers for <strong>horizontal scaling</strong>.</p>
+    <ul>
+      <li><strong>Shard:</strong> Stores data</li>
+      <li><strong>Config Server:</strong> Manages metadata</li>
+      <li><strong>Mongos Router:</strong> Routes client queries</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>11. Join Operation</h2>
+    <p>MongoDB uses <code>$lookup</code> for joins.</p>
+    <pre><code>db.orders.aggregate([
+  { $lookup: {
+      from: "customers",
+      localField: "cust_id",
+      foreignField: "_id",
+      as: "customer_info"
+  }}
+])</code></pre>
+  </section>
+
+  <section>
+    <h2>12. Pagination</h2>
+    <p>Used to display results page by page.</p>
+    <pre><code>db.students.find().skip(10).limit(5)</code></pre>
+  </section>
+
+  <section>
+    <h2>13. Quick Comparison (SQL vs MongoDB)</h2>
+    <table>
+      <tr><th>SQL Term</th><th>MongoDB Term</th></tr>
+      <tr><td>Table</td><td>Collection</td></tr>
+      <tr><td>Row</td><td>Document</td></tr>
+      <tr><td>Column</td><td>Field</td></tr>
+      <tr><td>Primary Key</td><td>_id</td></tr>
+      <tr><td>JOIN</td><td>$lookup</td></tr>
+      <tr><td>WHERE</td><td>$match</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Summary</h2>
+    <p>NoSQL databases like <strong>MongoDB</strong> are <strong>fast, flexible, and scalable</strong>. They store data in documents instead of tables, support complex queries, and handle massive data efficiently — making them perfect for <strong>modern web and cloud applications</strong>.</p>
+  </section>
+
+</body>
+</html>
